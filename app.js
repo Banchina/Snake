@@ -14,6 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.appendChild(square)
   }
 
+  // if (statement) {
+  // if (squares[snake[0]].classlist.contains('apple'))
+
+  // DON'T POP
+  // + 1 TO THE SCORE &
+  // GENERATE ANOTHER RANDOM NUMBER APPLE
+  // }
+
+
+  //************FUNCTIONS*************//
+
+// generate a random NUMBER on a square without the class of snake
+// give that div a class of active/apple (display in CSS)
+// if snake head contains the class of apple
+//      - don't pop from end of snake boundary
+//      - increment the score by one
+//      - generate another random number / apple.
+
+  function createApple () {
+   const chosenSquare = squares[Math.floor(Math.random() * grid.length)]
+   choseSquare.classList.contains('apple')
+
   function drawSnake() {
     snake.forEach(index => squares[index].classList.add('snake'))
   }
@@ -26,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveSnake() {
 
     if (snake[0] % width === 0 && direction === 'left' ||
-//    
+//if 1st box/snake head position divides evenly ie the column down from it, and snake is going left, return false
         snake[0] % width === width -1  && direction === 'right' ||
-
+//if 1st box divided by with = -1 its refering to the same row, along to the right, when snake is going right therefore, stop
         snake[0] - width < 0  && direction === 'up' ||
-
+//if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
         snake[0] >= width * (width - 1 )  && direction === 'down') {
-
+//if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
       return false
     }
 
@@ -80,34 +102,24 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keydown', (e) => {
   switch(e.keyCode) {
 
-    case 37:
-      if(playerIndex % width > 0) {
-    direction = 'left'
-  }
-      break
-    case 38:
-      if(playerIndex - width >= 0) {
-     direction = 'up'
-   }
-      break
-    case 39:
-      if(playerIndex % width < width - 1) {
-      playerIndex++
-    direction = 'right'
-  }
-      break
-    case 40:
-      if(playerIndex + width < width * width) {
-    direction = 'down'
-  }
+    case 37: direction = 'left'
       break
 
+    case 38: direction = 'up'
+      break
+
+    case 39: direction = 'right'
+      break
+
+    case 40: direction = 'down'
+      break
     }
   })
 })
   //
   //   }
   // }
+
 
 //snake[0] head of snake integer
 
