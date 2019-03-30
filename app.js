@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let direction = 'right'
   const chosenSquare = []
   let score = 0
+  let i = 0
 
 console.log(squares)
 
@@ -68,7 +69,8 @@ createApple()
   function moveSnake() {
 
     if (squares[snake[0]].classList.contains('apple')){
-       squares[index].classList.remove('snake')
+       squares[snake[0]].classList.remove('apple')
+       snake.unshift(snake[0])
        score++
        createApple()
     }
@@ -79,8 +81,9 @@ createApple()
 //if 1st box divided by with = -1 its refering to the same row, along to the right, when snake is going right therefore, stop
         snake[0] - width < 0  && direction === 'up' ||
 //if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
-        snake[0] >= width * (width - 1 )  && direction === 'down') {
+        snake[0] >= width * (width - 1 )  && direction === 'down'||
 //if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
+        squares[snake[0]] === squares[snake[i > 0]] ){
 
       return false //+ alert('Unicorn crash. You scored  !')
       // Will need to return a message of "Unicorn crash. You scored  !"
@@ -106,8 +109,6 @@ createApple()
 
 //   score++
 // } else {
-
-
 
   function moveRight(){
     eraseSnake()
