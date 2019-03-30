@@ -30,5 +30,10 @@ body {
 }
 .snake {
   /* background-color: blue; */
-  background-image: linear-gradient(red, yellow, green, blue, indigo, violet); 
+  background-image: linear-gradient(red, yellow, green, blue, indigo, violet);
+}
+.apple {
+  background-color: red;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrdOOw1N1FUuPbW49T7TiKEpPAd8lGKlHLDnUL5j-Pusnb7OR"); */
+  /* background-image: url("https://stjohnucctrenton.org/wp-content/uploads/2013/02/rainbow_5997c.jpg");  */
 }

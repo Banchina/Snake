@@ -5,8 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const squares = []
   const snake = [3,2,1,0]
   let direction = 'right'
-  let playerIndex = 0
+  const chosenSquare = []
+  let score = 0
 
+console.log(squares)
 
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('DIV')
@@ -14,8 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.appendChild(square)
   }
 
+  function createApple(){
+    // generate a random NUMBER on a square without the class of snake
+    let chosenSquare = squares[Math.floor(Math.random() * squares.length)]
+    // give that div a class of active/apple (display in CSS)
+    chosenSquare.classList.add('apple')
+}
+createApple()
+// chosenSquare logged here is as the array of 324 divs containing one with class apple
+
   // if (statement) {
   // if (squares[snake[0]].classlist.contains('apple'))
+  //   score++
+    //don't pop
+    //remove apple
+    //generate another apple
+
 
   // DON'T POP
   // + 1 TO THE SCORE &
@@ -31,10 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
 //      - don't pop from end of snake boundary
 //      - increment the score by one
 //      - generate another random number / apple.
+  //
+  // function createApple () {
+  //   const chosenSquare = squares[Math.floor(Math.random() * grid.length)]
+  //   chosenSquare.classList.contains('apple')
+  // }
+  //
+  // setInterval(createApple, 500)
 
-  function createApple () {
-   const chosenSquare = squares[Math.floor(Math.random() * grid.length)]
-   choseSquare.classList.contains('apple')
 
   function drawSnake() {
     snake.forEach(index => squares[index].classList.add('snake'))
@@ -47,6 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function moveSnake() {
 
+    if (squares[snake[0]].classList.contains('apple')){
+       squares[index].classList.remove('snake')
+       score++
+       createApple()
+    }
+
     if (snake[0] % width === 0 && direction === 'left' ||
 //if 1st box/snake head position divides evenly ie the column down from it, and snake is going left, return false
         snake[0] % width === width -1  && direction === 'right' ||
@@ -55,8 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
         snake[0] >= width * (width - 1 )  && direction === 'down') {
 //if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
-      return false
+
+      return false //+ alert('Unicorn crash. You scored  !')
+      // Will need to return a message of "Unicorn crash. You scored  !"
     }
+    // // console.log(score)
 
     eraseSnake()
     switch(direction){
@@ -72,6 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     drawSnake()
   }
   setInterval(moveSnake, 100)
+
+//***** FUNCTIONS
+
+//   score++
+// } else {
+
+
 
   function moveRight(){
     eraseSnake()
@@ -99,7 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-document.addEventListener('keydown', (e) => {
+// *****LISENINING FOR DIRECTIONAL ARROW KEY INPUT*****
+  document.addEventListener('keydown', (e) => {
   switch(e.keyCode) {
 
     case 37: direction = 'left'
