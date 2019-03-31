@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('.grid')
+  const scores = document.querySelector('.score')
+
   const width = 18
   const squares = []
   const snake = [3,2,1,0]
   let direction = 'right'
   const chosenSquare = []
-  let score = 0
+  let scoreTally = 0
   let i = 0
 
-console.log(squares)
+console.log(chosenSquare)
 
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('DIV')
@@ -66,13 +68,19 @@ createApple()
       squares[index].classList.remove('snake'))
   }
 
+  function gameOver() {
+    alert('Game over. You scored &{scoreTally}!')
+    // remove key event listeners?
+  }
+
   function moveSnake() {
 
     if (squares[snake[0]].classList.contains('apple')){
-       squares[snake[0]].classList.remove('apple')
-       snake.unshift(snake[0])
-       score++
-       createApple()
+      scoreTally++
+      scores.innerText = scoreTally
+      squares[snake[0]].classList.remove('apple')
+      snake.unshift(snake[0])
+      createApple()
     }
 
     if (snake[0] % width === 0 && direction === 'left' ||
@@ -83,12 +91,11 @@ createApple()
 //if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
         snake[0] >= width * (width - 1 )  && direction === 'down'||
 //if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
-        squares[snake[0]] === squares[snake[i > 0]] ){
+        ((snake[0] = snake[i]) && i > 0) ){
 
       return false //+ alert('Unicorn crash. You scored  !')
       // Will need to return a message of "Unicorn crash. You scored  !"
     }
-    // // console.log(score)
 
     eraseSnake()
     switch(direction){
@@ -103,7 +110,7 @@ createApple()
     }
     drawSnake()
   }
-  setInterval(moveSnake, 100)
+  setInterval(moveSnake, 500)
 
 //***** FUNCTIONS
 
