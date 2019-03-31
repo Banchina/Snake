@@ -1,34 +1,49 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   display: flex;
-  align-items: center;
   height: 100vh;
-  justify-content: center;
-  margin: 0;
+  margin-left: 40px;
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
-  /* center top no-repeat fixed; */
-  /* background-size: auto 100vh; */
   background-size: cover;
-
-  /* background-size: cover; */
-
-
 }
 header {
   display: flex;
   align-items: flex-start;
+  flex-flow: row wrap;
 }
 h1 {
-  font-size: 40px;
+  font-size: 70px;
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+section {
+  display:flex;
+}
+.right {
+  display: flex;
+  flex-wrap: wrap;
+}
+.left {
+  margin-right: 30px;
+}
+.buttons {
+}
+button {
+  height: 40px;
+  width: 100px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(1, 1, 1, 0.4);
+  border-radius: 5px;
+  border: solid white 2px;
 }
 .score {
   font-size: 30px;
   display: flex;
+  align-self: flex-end;
+  width: 25%;
 }
-
 .grid {
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);

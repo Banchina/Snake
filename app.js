@@ -110,7 +110,7 @@ createApple()
     }
     drawSnake()
   }
-  setInterval(moveSnake, 500)
+  setInterval(moveSnake, 100)
 
 //***** FUNCTIONS
 
