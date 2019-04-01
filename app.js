@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const squares = []
   const snake = [3,2,1,0]
   let direction = 'right'
-  const chosenSquare = []
+  let chosenSquare = 0
   let scoreTally = 0
+  let snakeSpeed = 400
   let i = 0
-
-console.log(chosenSquare)
 
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('DIV')
@@ -21,28 +20,15 @@ console.log(chosenSquare)
 
   function createApple(){
     // generate a random NUMBER on a square without the class of snake
-    let chosenSquare = squares[Math.floor(Math.random() * squares.length)]
+    chosenSquare = squares[Math.floor(Math.random() * squares.length)]
     // give that div a class of active/apple (display in CSS)
     chosenSquare.classList.add('apple')
+
+    // if snake in play
 }
-createApple()
+// createApple()
+
 // chosenSquare logged here is as the array of 324 divs containing one with class apple
-
-  // if (statement) {
-  // if (squares[snake[0]].classlist.contains('apple'))
-  //   score++
-    //don't pop
-    //remove apple
-    //generate another apple
-
-
-  // DON'T POP
-  // + 1 TO THE SCORE &
-  // GENERATE ANOTHER RANDOM NUMBER APPLE
-  // }
-
-
-  //************FUNCTIONS*************//
 
 // generate a random NUMBER on a square without the class of snake
 // give that div a class of active/apple (display in CSS)
@@ -50,38 +36,37 @@ createApple()
 //      - don't pop from end of snake boundary
 //      - increment the score by one
 //      - generate another random number / apple.
-  //
-  // function createApple () {
-  //   const chosenSquare = squares[Math.floor(Math.random() * grid.length)]
-  //   chosenSquare.classList.contains('apple')
-  // }
-  //
-  // setInterval(createApple, 500)
 
 
   function drawSnake() {
+    console.log('drawing snake')
     snake.forEach(index => squares[index].classList.add('snake'))
+  }
+  function snakeDeath() {
+    if(snake.slice(1).includes(snake[0])) {
+      return gameOver()
+    }
   }
 
   function eraseSnake() {
-    snake.forEach(index =>
-      squares[index].classList.remove('snake'))
+    console.log('removing snake')
+    snake.forEach(index => squares[index].classList.remove('snake'))
   }
 
+// could we say if snake speed / interval = 0, run gameOver function / remove snake.
   function gameOver() {
-    alert('Game over. You scored &{scoreTally}!')
-    // remove key event listeners?
+    console.log('game over')
+    eraseSnake()
+    clearInterval()
+    grid.classList.remove('grid')
+    // snake.forEach(index =>
+    //   squares[index].classList.remove('snake'))
+  //   // run future end of game code (poss including removing key event listeners?)
+    // chosenSquare.classList.remove('apple')  // doesn't
+  //
   }
 
   function moveSnake() {
-
-    if (squares[snake[0]].classList.contains('apple')){
-      scoreTally++
-      scores.innerText = scoreTally
-      squares[snake[0]].classList.remove('apple')
-      snake.unshift(snake[0])
-      createApple()
-    }
 
     if (snake[0] % width === 0 && direction === 'left' ||
 //if 1st box/snake head position divides evenly ie the column down from it, and snake is going left, return false
@@ -89,15 +74,22 @@ createApple()
 //if 1st box divided by with = -1 its refering to the same row, along to the right, when snake is going right therefore, stop
         snake[0] - width < 0  && direction === 'up' ||
 //if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
-        snake[0] >= width * (width - 1 )  && direction === 'down'||
+        snake[0] >= width * (width - 1 )  && direction === 'down') {
 //if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
-        ((snake[0] = snake[i]) && i > 0) ){
-
-      return false //+ alert('Unicorn crash. You scored  !')
-      // Will need to return a message of "Unicorn crash. You scored  !"
-    }
-
+    return gameOver()
+ // THIS IS WORKING BUT NOT CONTINUING MOVEMENT ONCE IT EATS AN APPLE.
+}
     eraseSnake()
+        // running gameOver after eraseSnake stops snake dying when it eats the apple
+      // Will need to return a message of "Snake crash. You scored  !"
+
+    //currently the following is killing the snake when it eats the apple, and ca
+    // for (let i=1;i<snake.length;i++){
+    //   if(snake[0] === snake[i]) {
+    //     // gameOver()
+    //   }
+    // }
+    // eraseSnake()
     switch(direction){
 
       case 'right' : moveRight()
@@ -109,13 +101,27 @@ createApple()
       case 'down' : moveDown()
     }
     drawSnake()
+    snakeDeath()
+
+    if (squares[snake[0]].classList.contains('apple')){
+      scoreTally++
+      snakeSpeed -= 10
+      scores.innerText = scoreTally
+      squares[snake[0]].classList.remove('apple')
+      snake.unshift(snake[0])
+      createApple()
+    }
+    drawSnake()
+// setTimeout better than interval here because it looks to run again in the set amount of time whereas setInterval says do this once and be set in stone
+    setTimeout(moveSnake, snakeSpeed)
   }
-  setInterval(moveSnake, 100)
+  moveSnake()   // not called previously so has to be called, and out
 
-//***** FUNCTIONS
 
-//   score++
-// } else {
+
+// if (scoreTally > 3) {
+//     setInterval(moveSnake, 100)
+// }
 
   function moveRight(){
     eraseSnake()
@@ -145,25 +151,24 @@ createApple()
 
 // *****LISENINING FOR DIRECTIONAL ARROW KEY INPUT*****
   document.addEventListener('keydown', (e) => {
-  switch(e.keyCode) {
+    switch(e.keyCode) {
+      // ( !== )
+      case 37: if (direction !== 'right') direction = 'left'
+        break
 
-    case 37: direction = 'left'
-      break
+      case 38: if (direction !== 'down') direction = 'up'
+        break
 
-    case 38: direction = 'up'
-      break
+      case 39: if (direction !== 'left') direction = 'right'
+        break
 
-    case 39: direction = 'right'
-      break
-
-    case 40: direction = 'down'
-      break
+      case 40: if (direction !== 'up') direction = 'down'
+        break
     }
   })
+  createApple()
 })
-  //
-  //   }
-  // }
+
 
 
 //snake[0] head of snake integer

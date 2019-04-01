@@ -8,6 +8,9 @@ body {
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
   background-size: cover;
 }
+.wrapper {
+  width: 1000px;
+}
 header {
   display: flex;
   align-items: flex-start;
@@ -32,7 +35,7 @@ section {
 }
 button {
   height: 40px;
-  width: 100px;
+  width: 170px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(1, 1, 1, 0.4);
   border-radius: 5px;
