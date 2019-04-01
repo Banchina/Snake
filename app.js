@@ -42,22 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('drawing snake')
     snake.forEach(index => squares[index].classList.add('snake'))
   }
-  function snakeDeath() {
-    if(snake.slice(1).includes(snake[0])) {
-      return gameOver()
-    }
-  }
 
   function eraseSnake() {
     console.log('removing snake')
     snake.forEach(index => squares[index].classList.remove('snake'))
   }
 
+  function snakeDeath() {
+    if(snake.slice(1).includes(snake[0])) {
+      return gameOver()
+    }
+  }
+
 // could we say if snake speed / interval = 0, run gameOver function / remove snake.
   function gameOver() {
     console.log('game over')
-    eraseSnake()
-    clearInterval()
+    // eraseSnake()
+    // clearInterval()
     grid.classList.remove('grid')
     // snake.forEach(index =>
     //   squares[index].classList.remove('snake'))
@@ -76,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 //if 1st box minus the width is less than 0 (meaning the boxes going up beyond the top of the grid) and the direction is up, stop
         snake[0] >= width * (width - 1 )  && direction === 'down') {
 //if first box/snake head position is greater than or equal to width * width - 1, so in this case 306, puttinh it into the last row, when the direction is therefore also down, this stops the snake when it tries to cross the grid's bottom boundary.
-    return gameOver()
- // THIS IS WORKING BUT NOT CONTINUING MOVEMENT ONCE IT EATS AN APPLE.
-}
+      return gameOver()
+      // THIS IS WORKING BUT NOT CONTINUING MOVEMENT ONCE IT EATS AN APPLE.
+    }
     eraseSnake()
-        // running gameOver after eraseSnake stops snake dying when it eats the apple
-      // Will need to return a message of "Snake crash. You scored  !"
+    // running gameOver after eraseSnake stops snake dying when it eats the apple
+    // Will need to return a message of "Snake crash. You scored  !"
 
     //currently the following is killing the snake when it eats the apple, and ca
     // for (let i=1;i<snake.length;i++){
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         break
       case 'down' : moveDown()
     }
-    drawSnake()
+    // drawSnake()
     snakeDeath()
 
     if (squares[snake[0]].classList.contains('apple')){
