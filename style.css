@@ -9,12 +9,21 @@ body {
   background-size: cover;
 }
 .wrapper {
+  display: flex;
+  width: 100vh;
+  /* margin-left: 0px; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: left;
+  justify-content: space-around;
   width: 1000px;
 }
-header {
-  display: flex;
-  align-items: flex-start;
-  flex-flow: row wrap;
+.title {
+    display: flex;
+    height: 200px;
+    font-size: 80px;
+    align-items: left;
+
 }
 h1 {
   font-size: 70px;
@@ -73,4 +82,7 @@ button {
   background-color: red;
   /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrdOOw1N1FUuPbW49T7TiKEpPAd8lGKlHLDnUL5j-Pusnb7OR"); */
   /* background-image: url("https://stjohnucctrenton.org/wp-content/uploads/2013/02/rainbow_5997c.jpg");  */
+}
+.flames {
+  background-image: url('images/game_over_flames.jpg');
 }

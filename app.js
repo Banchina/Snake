@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case 40: if (direction !== 'up') direction = 'down'
         break
     }
+    console.log(snake)
   })
   createApple()
 })
