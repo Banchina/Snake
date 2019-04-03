@@ -49,28 +49,41 @@ h1 {
   /* margin-right: 30px; */
 }
 .scoreCircle {
-  height: 145px;
-  width: 145px;
+  height: 155px;
+  width: 155px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(1, 1, 1, 0.4);
   border-radius: 100px;
   border: solid black 8px;
   color: #f5a53c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.score {
+  font-size: 30px;
+  margin: auto;
+  display: block;
+  width: 50%;
 }
 button {
-  height: 130px;
-  width: 130px;
+  height: 155px;
+  width: 155px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(1, 1, 1, 0.4);
   border-radius: 100px;
   border: solid white 2px;
   font-size: 15px;
   color: #f5a53c;
+
 }
-.score {
-  font-size: 30px;
-  display: flex;
-  width: 25%;
+.button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  border-radius: 100px;
 }
 .grid {
   align-items: center;
@@ -94,7 +107,7 @@ button {
 .snake {
   /* background-image: linear-gradient(red, yellow, green, blue, indigo, violet); */
   background-color: inherit;
-  background-image: url(images/cut_generic_red.png);
+  background-image: url(images/cut_generic_red1.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -114,4 +127,13 @@ button {
   height: 418px;
 
   /* background-size: contain; */
+}
+.grid div.snake[data-direction="backward"] {
+  transform: scaleX(-1);
+}
+.grid div.snake[data-direction="up"] {
+  transform: rotate(-90deg)
+}
+.grid div.snake[data-direction="down"] {
+  transform: rotate(90deg)
 }

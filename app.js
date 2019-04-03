@@ -19,20 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
   for(let i = 0; i < width * width; i++) {
     // putting an gameInPlay if statement not necessary, wrecks code
     const square = document.createElement('DIV')
+    //squares is an array of divs
     squares.push(square)
     grid.appendChild(square)
   }
   console.log(gameInPlay)
   // }
 
-  function createApple(){
+  function createApple() {
     // generate a random NUMBER on a square without the class of snake
-    const chosenSquare = squares[Math.floor(Math.random() * squares.length)] // SEAN'S MADE CONSTT CHOSENSQUARE
-    // give that div a class of active/apple (display in CSS)
-    chosenSquare.classList.add('apple')
+    let chosenSquare = Math.floor(Math.random() * squares.length)
+    while(squares[chosenSquare].classList.contains('snake')) {
+      chosenSquare = Math.floor(Math.random() * squares.length)
+    }
+    squares[chosenSquare].classList.add('apple')
 
-    // if snake in play
   }
+
+  // if snake in play
+  // }
   // createApple()    //SEAN'S
 
   // chosenSquare logged here is as the array of 324 divs containing one with class apple
@@ -45,15 +50,26 @@ document.addEventListener('DOMContentLoaded', () => {
   //      - generate another random number / apple.
 
 
+/////*********////////
+
   function drawSnake() {
     console.log('drawing snake')
-    snake.forEach(index => squares[index].classList.add('snake'))
+    snake.forEach(index => {
+      squares[index].classList.add('snake')
+      squares[index].setAttribute('data-direction', direction)
+    })
   }
 
   function eraseSnake() {
     console.log('removing snake')
-    snake.forEach(index => squares[index].classList.remove('snake'))
+    snake.forEach(index => {
+      squares[index].classList.remove('snake')
+      squares[index].removeAttribute('data-direction')
+    })
   }
+
+/////*********////////
+
   console.log(gameInPlay)
 
   function snakeDeath() {
@@ -188,7 +204,7 @@ console.log(gameInPlay)
   playAgain.addEventListener('click', () => {
     snake.forEach(index => squares[index].classList.remove('snake')) //SEAN'S
     snake = [3,2,1,0]
-    // overcomes default up direction so that snake does not kill itself immediately on game 
+    // overcomes default up direction so that snake does not kill itself immediately on game
     direction = 'right'
     gameInPlay = true
     clearTimeout(timer)
