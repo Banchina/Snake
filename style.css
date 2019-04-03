@@ -7,12 +7,13 @@ body {
   /* margin-left: 40px; */
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
   background-size: cover;
+  overflow: hidden;
 }
 .title {
 
 }
 .wrapper {
-  height: ;
+  height: 100vh;
   display: flex;
   /* width: 100vh; */
   /* margin-left: 0px; */
@@ -28,9 +29,6 @@ body {
     align-items: left;
     width: 1050px;
 }
-.gameBoard {
-  width: 1050px;
-}
 h1 {
   font-size: 90px;
   color: white;
@@ -39,6 +37,7 @@ h1 {
 .gameBoard {
   display: flex;
   justify-content: space-around;
+  width: 1050px;
 }
 /* .right / middle {
   display: flex;
@@ -50,12 +49,13 @@ h1 {
   /* margin-right: 30px; */
 }
 .scoreCircle {
-  height: 130px;
-  width: 130px;
+  height: 145px;
+  width: 145px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(1, 1, 1, 0.4);
   border-radius: 100px;
-  border: solid white 2px;
+  border: solid black 8px;
+  color: #f5a53c;
 }
 button {
   height: 130px;
@@ -65,11 +65,11 @@ button {
   border-radius: 100px;
   border: solid white 2px;
   font-size: 15px;
+  color: #f5a53c;
 }
 .score {
   font-size: 30px;
   display: flex;
-  align-self: flex-end;
   width: 25%;
 }
 .grid {
@@ -103,13 +103,13 @@ button {
 }
 .apple {
   background-color: inherit;
-  background-image: url(images/cut_baddie_plane.svg);
+  background-image: url(images/blue_2D_plane.png);
   background-size: contain;
   /* background-image: url("https://stjohnucctrenton.org/wp-content/uploads/2013/02/rainbow_5997c.jpg");  */
 }
 .flames {
   background-image: url('images/game_over_flames_orange.jpg');
-  /* margin-top: 15px; */
+  /* margin-top: 0px; */
   width: 600px;
   height: 418px;
 

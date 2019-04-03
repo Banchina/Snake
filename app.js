@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let snakeSpeed = 400
   // const i = 0
   let gameInPlay = true
-  // let timer    // SEAN'S CODE, CLEARS DOUBLE SNAKE
+  let timer    // SEAN'S CODE, CLEARS DOUBLE SNAKE
 
   for(let i = 0; i < width * width; i++) {
     // putting an gameInPlay if statement not necessary, wrecks code
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createApple(){
     // generate a random NUMBER on a square without the class of snake
-    chosenSquare = squares[Math.floor(Math.random() * squares.length)]
+    const chosenSquare = squares[Math.floor(Math.random() * squares.length)] // SEAN'S MADE CONSTT CHOSENSQUARE
     // give that div a class of active/apple (display in CSS)
     chosenSquare.classList.add('apple')
 
     // if snake in play
   }
-  // createApple()
+  // createApple()    //SEAN'S
 
   // chosenSquare logged here is as the array of 324 divs containing one with class apple
 
@@ -57,14 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(gameInPlay)
 
   function snakeDeath() {
-    if(snake.slice(1).includes(snake[0])) {
-      return gameOver()
+    if(snake.slice(1).includes(snake[0])) { // SEAN'S ISN'T IN IF STATEMENT
+      return gameOver()       // SEAN'S DOESN'T RETURN A GAMEOVER FUNCTION HERE
     }
+    // return snake.slice(1).includes[snake[0]]  // SEAN'S, INSTEAD OF IF STATMENT
   }
 
   // could we say if snake speed / interval = 0, run gameOver function / remove snake.
   function gameOver() {
     console.log('game over')
+    snakeSpeed = 400
     gameInPlay = false
     grid.classList.remove('grid')
     grid.classList.add('flames')
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     drawSnake()
     // setTimeout better than interval here because it looks to run again in the set amount of time whereas setInterval says do this once and be set in stone
-    setTimeout(moveSnake, snakeSpeed) //SEAN'S: timer = setTimeout(moveSnake, snakeSpeed) AS SNAKE SPEEDS UP ON RESET AND  A DOUBLE SNAKE
+    timer = setTimeout(moveSnake, snakeSpeed) //SEAN'S: timer = setTimeout(moveSnake, snakeSpeed) AS SNAKE SPEEDS UP ON RESET AND  A DOUBLE SNAKE
   }
   moveSnake()   // not called previously so has to be called, and out
 
@@ -158,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     snake.unshift(snake[0] + width)
     drawSnake()
   }
+
 console.log(gameInPlay)
 
   // *****LISENINING FOR DIRECTIONAL ARROW KEY INPUT*****
@@ -183,17 +186,19 @@ console.log(gameInPlay)
 
 
   playAgain.addEventListener('click', () => {
-    // snake.forEach(index => squares[index].classList.remove('snake')) SEAN'S
+    snake.forEach(index => squares[index].classList.remove('snake')) //SEAN'S
     snake = [3,2,1,0]
+    // overcomes default up direction so that snake does not kill itself immediately on game 
     direction = 'right'
     gameInPlay = true
+    clearTimeout(timer)
     grid.classList.remove('flames')
     grid.classList.add('grid')
     scoreTally = 0
     scores.innerText = scoreTally
     drawSnake()
     moveSnake()
-    // clearTimeout(timer)    SEAN'S for us reset doesn't work after a death
+    //SEAN'S for us reset doesn't work after a death
 
   })
 
