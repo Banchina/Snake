@@ -4,51 +4,67 @@
 body {
   display: flex;
   height: 100vh;
-  margin-left: 40px;
+  /* margin-left: 40px; */
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
   background-size: cover;
 }
+.title {
+
+}
 .wrapper {
+  height: ;
   display: flex;
-  width: 100vh;
+  /* width: 100vh; */
   /* margin-left: 0px; */
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: left;
+  align-items: center;
   justify-content: space-around;
-  width: 1000px;
+  width: 1450px;
 }
 .title {
     display: flex;
-    height: 200px;
-    font-size: 80px;
+    height: 180px;
     align-items: left;
-
+    width: 1050px;
+}
+.gameBoard {
+  width: 1050px;
 }
 h1 {
-  font-size: 70px;
+  font-size: 90px;
   color: white;
   font-family: 'Lobster', cursive;
 }
-section {
-  display:flex;
-}
-.right {
+.gameBoard {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
+/* .right / middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+} */
 .left {
-  margin-right: 30px;
+  /* margin-right: 30px; */
 }
-.buttons {
-}
-button {
-  height: 40px;
-  width: 170px;
+.scoreCircle {
+  height: 130px;
+  width: 130px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   background-color: rgba(1, 1, 1, 0.4);
-  border-radius: 5px;
+  border-radius: 100px;
   border: solid white 2px;
+}
+button {
+  height: 130px;
+  width: 130px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(1, 1, 1, 0.4);
+  border-radius: 100px;
+  border: solid white 2px;
+  font-size: 15px;
 }
 .score {
   font-size: 30px;
@@ -66,6 +82,7 @@ button {
   justify-content: center;
   max-height: 600px;
   max-width: 600px;
+  margin: 15px;
 }
 
 .grid div {
@@ -76,13 +93,25 @@ button {
 }
 .snake {
   /* background-image: linear-gradient(red, yellow, green, blue, indigo, violet); */
-  background-color: white;
+  background-color: inherit;
+  background-image: url(images/cut_generic_red.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
+
 }
 .apple {
-  background-color: red;
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyrdOOw1N1FUuPbW49T7TiKEpPAd8lGKlHLDnUL5j-Pusnb7OR"); */
+  background-color: inherit;
+  background-image: url(images/cut_baddie_plane.svg);
+  background-size: contain;
   /* background-image: url("https://stjohnucctrenton.org/wp-content/uploads/2013/02/rainbow_5997c.jpg");  */
 }
 .flames {
-  background-image: url('images/game_over_flames.jpg');
+  background-image: url('images/game_over_flames_orange.jpg');
+  /* margin-top: 15px; */
+  width: 600px;
+  height: 418px;
+
+  /* background-size: contain; */
 }
