@@ -8,6 +8,7 @@ body {
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
   background-size: cover;
   overflow: hidden;
+
 }
 .wrapper {
   height: 100vh;
@@ -74,6 +75,7 @@ h1 {
 
 .left {
   width: 800px;
+  margin-left: 30px;
 }
 .scoreCircle {
   height: 155px;
@@ -86,6 +88,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 17px;
 }
 .score {
   font-size: 30px;
@@ -96,12 +99,14 @@ h1 {
 button {
   height: 155px;
   width: 155px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
   background-color: rgba(1, 1, 1, 0.4);
   border-radius: 100px;
   border: solid white 2px;
-  font-size: 15px;
+  font-size: 17px;
   color: #f5a53c;
+  box-shadow: none;
+
 
 }
 .button {
@@ -122,7 +127,7 @@ button {
   justify-content: center;
   max-height: 600px;
   max-width: 600px;
-  margin: 15px;
+  margin: 5px 15px;
 }
 
 .grid div {
@@ -159,12 +164,12 @@ button {
 
   /* background-size: contain; */
 }
-.grid div.snake[data-direction="backward"] {
-  transform: scaleX(-1);
+.grid div.snake[data-direction="left"] {
+  transform: rotate(-180deg);
 }
 .grid div.snake[data-direction="up"] {
-  transform: rotate(-90deg)
+  transform: rotate(-90deg);
 }
 .grid div.snake[data-direction="down"] {
-  transform: rotate(90deg)
+  transform: rotate(90deg);
 }
