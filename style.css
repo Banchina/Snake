@@ -4,13 +4,10 @@
 body {
   display: flex;
   height: 100vh;
-  /* margin-left: 40px; */
+  /* margin-left: 0px; */
   background: url('https://steamcdn-a.akamaihd.net/steam/apps/790710/ss_f92678cc1967a70f441be2816cdbde719678edd9.1920x1080.jpg?t=1551956203') center no-repeat fixed;
   background-size: cover;
   overflow: hidden;
-}
-.title {
-
 }
 .wrapper {
   height: 100vh;
@@ -21,13 +18,14 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  width: 1450px;
+  width: 1100px;
 }
 .title {
     display: flex;
     height: 180px;
     align-items: left;
     width: 1050px;
+    align-items: flex-start;
 }
 h1 {
   font-size: 90px;
@@ -36,17 +34,46 @@ h1 {
 }
 .gameBoard {
   display: flex;
-  justify-content: space-around;
-  width: 1050px;
+  justify-content: space-between;
+  width: 1150px;
+  margin-left: 40px;
 }
-/* .right / middle {
+.right {
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  /* align-items: flex-start; */
+  weight: 500px;
+  align-items: stretch;
+}
+.row-1 {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.row-2{
+  display: flex;
   align-items: flex-start;
-} */
+  justify-content: center;
+
+  /* flex-direction: column; */
+}
+.arrowKeys {
+  height: 200px;
+  width: 200px;
+}
+/* TURN TO YOU SCORED <SPAN> */
+.result {
+  font-size: 50px;
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
 .left {
-  /* margin-right: 30px; */
+  width: 800px;
 }
 .scoreCircle {
   height: 155px;
@@ -105,13 +132,16 @@ button {
   /* border: 1px solid black; */
 }
 .snake {
+  background-image: url(images/smoke.gif);
   /* background-image: linear-gradient(red, yellow, green, blue, indigo, violet); */
-  background-color: inherit;
-  background-image: url(images/cut_generic_red1.png);
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 100%;
+  border-radius: 250px;
+  background-size: cover;
+
+  background-image: url(images/cut_generic_red1.png);
+  /* background-color: inherit;
+  background-size: contain; */
 
 }
 .apple {
@@ -119,10 +149,11 @@ button {
   background-image: url(images/blue_2D_plane.png);
   background-size: contain;
   /* background-image: url("https://stjohnucctrenton.org/wp-content/uploads/2013/02/rainbow_5997c.jpg");  */
+
 }
 .flames {
   background-image: url('images/game_over_flames_orange.jpg');
-  /* margin-top: 0px; */
+  /*margin-top: 0px; */
   width: 600px;
   height: 418px;
 
