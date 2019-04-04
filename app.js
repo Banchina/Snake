@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const scores = document.querySelector('.score')
   const playAgain = document.querySelector('button')
   const popUp = document.querySelector('.flames')
+  const topGun = document.querySelector('.top')
+  const dangerZone = document.querySelector('audio')
+  const crashSound = document.querySelector('.crash')
+  const enemySound = document.querySelector('.enemy')
+  const fireSound = document.querySelector('.fireUp')
+  const keyResult = document.querySelector('.arrowKeys')
 
   const width = 18
   const squares = []
@@ -80,17 +86,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   console.log(gameInPlay)
 
+  function soundTrack() {
+    dangerZone.src = 'sounds/danger_zone.mp3'
+  }
+  function soundEffect() {
+    crashSound.src = 'sounds/aircrash.mp3'
+  }
+  function enemy() {
+    enemySound.src = 'sounds/hitplane.mp3'
+  }
+  function runway() {
+    fireSound.src = 'sounds/take_off.mp3'
+  }
+
   // could we say if snake speed / interval = 0, run gameOver function / remove snake.
   function gameOver() {
     console.log('game over')
     snakeSpeed = 400
     gameInPlay = false
     grid.classList.remove('grid')
-    if (scoreTally >= 20) {
-      grid.classList.add('')
+    console.log('remove')
+    if (scoreTally > 2) {
+      grid.classList.add('top')
+      dangerZone.play()
     } else {
       grid.classList.add('flames')
+      crashSound.play()
     }
+
     eraseSnake()
 
     // gameInPlay = false
@@ -146,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (squares[snake[0]].classList.contains('apple')){
       scoreTally++
+      enemySound.play()
       snakeSpeed -= 10
       scores.innerText = scoreTally
       squares[snake[0]].classList.remove('apple')
@@ -208,7 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInPlay = true
     clearTimeout(timer)
     grid.classList.remove('flames')
+    grid.classList.remove('top')
     grid.classList.add('grid')
+    dangerZone.pause()
+    fireSound.play()
     scoreTally = 0
     scores.innerText = scoreTally
     drawSnake()
