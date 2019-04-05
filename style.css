@@ -91,12 +91,15 @@ position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 23px;
+  font-size: 21px;
+  font-family: 'Anton', sans-serif;
 }
 .score {
   margin: auto;
   display: block;
   width: 40%;
+  font-family: 'Anton', sans-serif;
+
 }
 button {
   height: 155px;
@@ -108,6 +111,7 @@ button {
   color: #f5a53c;
   box-shadow: 0;
   cursor: pointer;
+  font-family: 'Anton', sans-serif;
 }
 button:focus {
   outline: 0;

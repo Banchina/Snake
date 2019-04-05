@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let direction = 'right'
   let chosenSquare = 0
   let scoreTally = 0
-  let snakeSpeed = 400
+  let snakeSpeed = 350
   // const i = 0
   let gameInPlay = true
   let timer    // SEAN'S CODE, CLEARS DOUBLE SNAKE
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInPlay = false
     grid.classList.remove('grid')
     console.log('remove')
-    if (scoreTally > 2) {
+    if (scoreTally > 20) {
       grid.classList.add('top')
       dangerZone.play()
     } else {
