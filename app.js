@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let direction = 'right'
   let chosenSquare = 0
   let scoreTally = 0
-  let snakeSpeed = 350
+  let snakeSpeed = 400
   // const i = 0
   let gameInPlay = true
   let timer    // SEAN'S CODE, CLEARS DOUBLE SNAKE
